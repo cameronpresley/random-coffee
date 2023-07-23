@@ -12,16 +12,15 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Print Contents
-        run: "ls -al"
-
       - name: Setup Deno
         # uses: denoland/setup-deno@v1
         uses: denoland/setup-deno@61fe2df320078202e33d7d5ad347e7dcfa0e8f31 # v1.1.2
         with:
           deno-version: v1.x
+
       - name: Check Deno Version
         run: "deno --version"
+
       - name: Run script
         run: |
-          deno run --allow-read --allow-net --allow-env ./main.ts
+          deno run --allow-read --allow-net --allow-env ./index.ts
