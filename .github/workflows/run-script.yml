@@ -25,5 +25,5 @@ jobs:
           deno run --allow-read --allow-net --allow-env ./index.ts
         env:
           GH_ORGANIZATION_NAME: ${{ vars.GH_ORGANIZATION_NAME }}
-          GH_BEARER_TOKEN: ${{ vars.GH_BEARER_TOKEN }}
-          SLACK_WEBHOOK: ${{ vars.SLACK_WEBHOOK }}
+          GH_BEARER_TOKEN: ${{ secrets.GH_BEARER_TOKEN }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
