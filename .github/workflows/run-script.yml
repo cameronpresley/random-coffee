@@ -6,7 +6,8 @@ on:
 
 jobs:
   run-script:
-    runs-on: denoland/deno:ubuntu-1.35.2
+    runs-on: ubuntu
+    # runs-on: denoland/deno:ubuntu-1.35.2
     steps:
       - name: Check Deno Version
         run: "deno --version"
