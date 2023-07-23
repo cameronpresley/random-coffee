@@ -13,4 +13,4 @@ This bot accompanies the [Having Coffee with Deno](https://blog.thesoftwaremento
 
 ### Running the script
 1. Navigate to the root of the repo
-1. Run `deno run --allow-read --allow-env --allow-net ./main.ts`
+1. Run `deno run --allow-read --allow-env --allow-net ./index.ts`
