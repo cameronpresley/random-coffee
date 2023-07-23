@@ -4,10 +4,10 @@ export type GetOrganizationMemberResponse = {
   login: string;
 };
 
-function createHeaders() {
+function createHeaders(bearerToken: string) {
   return {
     Accept: "application/vnd.github+json",
-    Authorization: `Bearer ${Deno.env.get("GITHUB_BEARER_TOKEN")}`,
+    Authorization: `Bearer ${bearerToken}`,
     "X-GitHub-Api-Version": "2022-11-28",
   };
 }
@@ -18,7 +18,7 @@ async function getMembersOfOrganization(
   const url = `https://api.github.com/orgs/${orgName}/members`;
   try {
     const resp = await axiod.get<GetOrganizationMemberResponse[]>(url, {
-      headers: createHeaders(),
+      headers: createHeaders(Deno.env.get("GITHUB_BEARER_TOKEN")!),
     });
     return resp.data;
   } catch (error) {
