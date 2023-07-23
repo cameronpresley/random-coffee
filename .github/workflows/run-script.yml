@@ -3,7 +3,10 @@ name: Run Script
 on:
   schedule:
     - cron: "5,10,15,20,25,30,35,40,45,50,55 * * * *" # Executes on Mondays at 12pm UTC
-
+env:
+  GH_ORGANIZATION_NAME: ${{ vars.GH_ORGANIZATION_NAME }}
+  GH_BEARER_TOKEN: ${{ vars.GH_BEARER_TOKEN }}
+  SLACK_WEBHOOK: ${{ vars.SLACK_WEBHOOK }}
 jobs:
   run-script:
     runs-on: ubuntu-latest
