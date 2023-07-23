@@ -2,13 +2,13 @@ name: Run Script
 
 on:
   schedule:
-    - cron: "0 12 * * *" # Executes on Mondays at 12pm UTC
+    - cron: "0/5 * * * *" # Executes on Mondays at 12pm UTC
 jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
+      # - name: Checkout Repo
+      #   uses: actions/checkout@v3
 
       - name: Setup Deno
         # uses: denoland/setup-deno@v1
