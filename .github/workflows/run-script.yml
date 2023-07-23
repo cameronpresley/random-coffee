@@ -2,14 +2,11 @@ name: Run Script
 
 on:
   schedule:
-    - cron: "0 12 * * 1" # Executes on Mondays at 12pm UTC
+    - cron: "0/5 * * * *" # Executes on Mondays at 12pm UTC
 jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
-
       - name: Setup Deno
         # uses: denoland/setup-deno@v1
         uses: denoland/setup-deno@61fe2df320078202e33d7d5ad347e7dcfa0e8f31 # v1.1.2
@@ -19,10 +16,13 @@ jobs:
       - name: Check Deno Version
         run: "deno --version"
 
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
       - name: Run script
         run: |
           deno run --allow-read --allow-net --allow-env ./index.ts
         env:
-          GH_ORGANIZATION_NAME: ${{ vars.GH_ORGANIZATION_NAME }}
-          GH_BEARER_TOKEN: ${{ secrets.GH_BEARER_TOKEN }}
+          GITHUB_ORGANIZATION_NAME: ${{ vars.GH_ORGANIZATION_NAME }}
+          GITHUB_BEARER_TOKEN: ${{ secrets.GH_BEARER_TOKEN }}
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

@@ -10,7 +10,7 @@ import { Pair, createPairsFrom, shuffle } from "./libraries/utility.ts";
 
 await load({ export: true });
 
-const organizationName = Deno.env.get("GH_ORGANIZATION_NAME")!;
+const organizationName = Deno.env.get("GITHUB_ORGANIZATION_NAME")!;
 const names = await getMembersOfOrganization(organizationName);
 const pairs = createPairsFrom(shuffle(names));
 
