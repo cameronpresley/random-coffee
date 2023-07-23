@@ -18,7 +18,7 @@ async function getMembersOfOrganization(
   const url = `https://api.github.com/orgs/${orgName}/members`;
   try {
     const resp = await axiod.get<GetOrganizationMemberResponse[]>(url, {
-      headers: createHeaders(Deno.env.get("GITHUB_BEARER_TOKEN")!),
+      headers: createHeaders(Deno.env.get("GH_BEARER_TOKEN")!),
     });
     return resp.data;
   } catch (error) {
